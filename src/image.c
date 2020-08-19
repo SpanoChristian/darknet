@@ -345,7 +345,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
                 round((selected_detections[i].det.bbox.x - selected_detections[i].det.bbox.w / 2)*im.w),
                 round((selected_detections[i].det.bbox.y - selected_detections[i].det.bbox.h / 2)*im.h),
                 round(selected_detections[i].det.bbox.w*im.w), round(selected_detections[i].det.bbox.h*im.h));
-            print("CIAOOOOOOOOOOOOOOOOOOOOOO")
+            printf ("%s \n", "CIAOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
         else
             printf("\n");
         int j;
@@ -358,7 +358,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
                         round((selected_detections[i].det.bbox.x - selected_detections[i].det.bbox.w / 2)*im.w),
                         round((selected_detections[i].det.bbox.y - selected_detections[i].det.bbox.h / 2)*im.h),
                         round(selected_detections[i].det.bbox.w*im.w), round(selected_detections[i].det.bbox.h*im.h));
-                        print("CIAOOOOOOOOOOOOOOOOOOOOOO")
+                        printf ("%s \n", "CIAOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
                 else
                     printf("\n");
             }
