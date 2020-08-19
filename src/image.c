@@ -10,6 +10,7 @@
 #define _USE_MATH_DEFINES
 #endif
 #include <math.h>
+#include<opencv2/opencv.hpp> // Aggiunto per croppare immagine
 
 #ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
@@ -345,7 +346,17 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
                 round((selected_detections[i].det.bbox.x - selected_detections[i].det.bbox.w / 2)*im.w),
                 round((selected_detections[i].det.bbox.y - selected_detections[i].det.bbox.h / 2)*im.h),
                 round(selected_detections[i].det.bbox.w*im.w), round(selected_detections[i].det.bbox.h*im.h));
-            printf ("%s \n", "CIAOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+            cv::Mat image1,image2;
+            image1=cv::imread("./predictions.jpg");
+            //Input for the program  
+            cv::Rect crop_region(78, 237, 120, 352);
+            // specifies the region of interest in Rectangle form
+
+            image2=image1(crop_region);
+            //creates image2 by extracting the specified region of image1
+
+            //Window creation 
+            imwrite( "./Prova.jpg", image2);
         } else {
             printf("\n");
         }
@@ -359,7 +370,17 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
                         round((selected_detections[i].det.bbox.x - selected_detections[i].det.bbox.w / 2)*im.w),
                         round((selected_detections[i].det.bbox.y - selected_detections[i].det.bbox.h / 2)*im.h),
                         round(selected_detections[i].det.bbox.w*im.w), round(selected_detections[i].det.bbox.h*im.h));
-                        printf ("%s \n", "CIAOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+                        cv::Mat image1,image2;
+                        image1=cv::imread("./predictions.jpg");
+                        //Input for the program  
+                        cv::Rect crop_region(78, 237, 120, 352);
+                        // specifies the region of interest in Rectangle form
+
+                        image2=image1(crop_region);
+                        //creates image2 by extracting the specified region of image1
+
+                        //Window creation 
+                        imwrite( "./Prova.jpg", image2);
                 } else {
                     printf("\n");
                 }
