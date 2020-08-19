@@ -11,6 +11,9 @@
 #endif
 #include <math.h>
 #include<opencv2/opencv.hpp> // Aggiunto per croppare immagine
+#include <cv.h>
+#include <highgui.h>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
