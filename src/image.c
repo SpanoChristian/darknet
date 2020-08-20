@@ -408,7 +408,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
             int b_y_center = (top + bot) / 2;
             int b_width = right - left;
             int b_height = bot - top;
-            sprintf(labelstr, "%d x %d - w: %d, h: %d", b_x_center, b_y_center, b_width, b_height);
+            //sprintf(labelstr, "%d x %d - w: %d, h: %d", b_x_center, b_y_center, b_width, b_height);
 
             // you should create directory: result_img
             static int copied_frame_id = -1;
