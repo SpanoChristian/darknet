@@ -423,7 +423,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
             img_id++;
             char image_name[1024];
             int best_class_id = selected_detections[i].best_class;
-            sprintf(image_name, "dataset_bbox/img_%d_%d_%d_%s_%s.jpg", frame_id, img_id, best_class_id, names[best_class_id], im.image_name);
+            sprintf(image_name, "dataset_bbox/img_%d_%d_%d_%s.jpg", frame_id, img_id, best_class_id, names[best_class_id]);
             save_image(cropped_im, image_name);
             free_image(cropped_im);
 
