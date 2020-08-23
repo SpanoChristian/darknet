@@ -1677,14 +1677,6 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
             else diounms_sort(dets, nboxes, l.classes, nms, l.nms_kind, l.beta_nms);
         }
 
-        // Remove directory if present.
-        // Do this before extension removal incase directory has a period character.
-        const size_t last_slash_idx = filename.find_last_of("\\/");
-        if (std::string::npos != last_slash_idx)
-        {
-            filename.erase(0, last_slash_idx + 1);
-        }
-
         draw_detections_v3(im, dets, nboxes, thresh, names, alphabet, l.classes, ext_output);
         save_image(im, "predictions");
         if (!dont_show) {
