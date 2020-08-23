@@ -423,7 +423,10 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
                 }
                 image cropped_im = crop_image(copy_img, left, top, right - left, bot - top);
                 static int img_id = 0;
-                img_id++;
+
+                srand (time(NULL));
+                img_id = rand() % 10000 + 1;
+
                 char image_name[1024];
 
                 sprintf(image_name, "dataset_bbox/img_%d_%d_%d_%s", frame_id, img_id, best_class_id, names[best_class_id]);
