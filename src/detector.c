@@ -1653,7 +1653,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
             layer lk = net.layers[k];
             if (lk.type == YOLO || lk.type == GAUSSIAN_YOLO || lk.type == REGION) {
                 l = lk;
-                printf(" Detection layer: %d - type = %d \n", k, l.type);
+                printf("FILENAME: %s ---- Detection layer: %d - type = %d \n", filename, k, l.type);
             }
         }
 
