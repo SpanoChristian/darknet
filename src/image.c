@@ -328,6 +328,12 @@ int compare_by_probs(const void *a_ptr, const void *b_ptr) {
 
 void draw_detections_v3(image im, detection *dets, int num, float thresh, char **names, image **alphabet, int classes, int ext_output)
 {
+    //std::string s = file_name;
+    //std::string delimiter = "_";
+
+    std::string img_identification = s.substr(0, s.find(delimiter));
+    std::string img_camera = s.substr(1, s.find(delimiter));
+
     static int frame_id = 0;
     frame_id++;
 
@@ -425,11 +431,11 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
                 static int img_id = 0;
 
                 srand (time(NULL));
-                img_id = rand() % 10000 + 1;
+                img_id = rand() % 100000 + 1;
 
                 char image_name[1024];
 
-                sprintf(image_name, "bounding_box_test/img_%d_%d_%d_%s", frame_id, img_id, best_class_id, names[best_class_id]);
+                sprintf(image_name, "bounding_box_test/%d_c1s1_%d", img_id, img_id, best_class_id);
                 save_image(cropped_im, image_name);
                 free_image(cropped_im);
             }
