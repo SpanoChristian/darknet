@@ -331,8 +331,8 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
     //std::string s = file_name;
     //std::string delimiter = "_";
 
-    std::string img_identification = s.substr(0, s.find(delimiter));
-    std::string img_camera = s.substr(1, s.find(delimiter));
+    // std::string img_identification = s.substr(0, s.find(delimiter));
+    // std::string img_camera = s.substr(1, s.find(delimiter));
 
     static int frame_id = 0;
     frame_id++;
