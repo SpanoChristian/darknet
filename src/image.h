@@ -105,6 +105,7 @@ void test_resize(char *filename);
 
 #endif
 
+#include <list>
 #include <string>
 
 #if ECS == gnu
