@@ -22,8 +22,6 @@
 #include "stb_image_write.h"
 #endif
 
-using namespace std;
-
 extern int check_mistakes;
 //int windows = 0;
 
