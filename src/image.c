@@ -331,12 +331,8 @@ int compare_by_probs(const void *a_ptr, const void *b_ptr) {
 
 void draw_detections_v3(image im, detection *dets, int num, float thresh, char **names, image **alphabet, int classes, int ext_output, char *file_name)
 {
-    int size_file_name = sizeof(file_name) / sizeof(char);
-
-    string str = "";
-    for (int i = 0; i < size_file_name; i++) { 
-        str = str + file_name[i]; 
-    }
+    char *p;
+    p = strtok(file_name, "_");
 
     //char delimiter[1] = "_";
 
