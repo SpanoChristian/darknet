@@ -14,8 +14,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-using namespace std;
 /*
 typedef struct {
     int w;
