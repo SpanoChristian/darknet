@@ -330,11 +330,11 @@ int compare_by_probs(const void *a_ptr, const void *b_ptr) {
 
 void draw_detections_v3(image im, detection *dets, int num, float thresh, char **names, image **alphabet, int classes, int ext_output)
 {
-    string s = file_name;
-    string delimiter = "_";
+    std::string s = file_name;
+    std::string delimiter = "_";
 
-    string img_identification = s.substr(0, s.find(delimiter));
-    string img_camera = s.substr(1, s.find(delimiter));
+    std::string img_identification = s.substr(0, s.find(delimiter));
+    std::string img_camera = s.substr(1, s.find(delimiter));
 
     static int frame_id = 0;
     frame_id++;
