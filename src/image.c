@@ -330,15 +330,17 @@ int compare_by_probs(const void *a_ptr, const void *b_ptr) {
 
 void draw_detections_v3(image im, detection *dets, int num, float thresh, char **names, image **alphabet, int classes, int ext_output, char *file_name)
 {
-    char s[40];
-    strcpy(s, file_name);
+    int size_file_name = sizeof(file_name) / sizeof(char);
 
-    printf("Filename: %s", s);
+    string str = "";
+    for (int i = 0; i < size_file_name; i++) { 
+        str = str + file_name[i]; 
+    }
 
-    char delimiter[1] = "_";
+    //char delimiter[1] = "_";
 
-    char img_identification[5] = s.substr(0, s.find(delimiter));
-    char img_camera[5] = s.substr(1, s.find(delimiter));
+    //char img_identification[5] = s.substr(0, s.find(delimiter));
+    //char img_camera[5] = s.substr(1, s.find(delimiter));
 
     static int frame_id = 0;
     frame_id++;
@@ -441,7 +443,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
 
                 char image_name[1024];
 
-                sprintf(image_name, "bounding_box_test/%d_%ds1_%d", img_id, img_camera, img_id, best_class_id);
+                sprintf(image_name, "bounding_box_test/%d_%ds1_%d", img_id, img_id, img_id, best_class_id); // 2° img_id = img_camera
                 save_image(cropped_im, image_name);
                 free_image(cropped_im);
             }

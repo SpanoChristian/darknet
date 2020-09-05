@@ -10,6 +10,8 @@
 
 #include "image_opencv.h"
 
+using namespace std;
+
 #include "box.h"
 #ifdef __cplusplus
 extern "C" {
