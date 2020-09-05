@@ -104,3 +104,29 @@ void test_resize(char *filename);
 #endif
 
 #endif
+
+#include <string>
+
+#if ECS == gnu
+#include <cstring>
+#define ECString string
+using namespace std;
+#else
+#include <bstring.h>
+#define ECString string
+#endif
+
+class ECArgs
+{
+ public:
+  ECArgs(int argc, char *argv[]);
+  int nargs() { return nargs_; }
+  bool isset(char c);
+  ECString value(char c);
+  ECString arg(int n) { return argList[n]; }
+ private:
+  int nargs_;
+  int nopts_;
+  ECString argList[32];
+  list<ECString> optList;
+};
