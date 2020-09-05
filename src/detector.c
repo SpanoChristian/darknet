@@ -1682,7 +1682,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         std::string delimiter = "/";
         std::string token = s.substr(2, s.find(delimiter));*/
 
-        draw_detections_v3(im, dets, nboxes, thresh, names, alphabet, l.classes, ext_output);
+        draw_detections_v3(im, dets, nboxes, thresh, names, alphabet, l.classes, ext_output, filename);
         save_image(im, "predictions");
         if (!dont_show) {
             show_image(im, "predictions");
