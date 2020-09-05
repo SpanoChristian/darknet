@@ -6,6 +6,8 @@
 #include "blas.h"
 #include "dark_cuda.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string>
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
 #endif
