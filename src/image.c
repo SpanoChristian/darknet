@@ -333,11 +333,6 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
     char *p;
     p = strtok(file_name, "_");
 
-    while (p != NULL) {
-        printf("%s\n", p);
-        p = strtok(NULL, "_");
-    }
-
     //char delimiter[1] = "_";
 
     //char img_identification[5] = s.substr(0, s.find(delimiter));
@@ -444,7 +439,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
 
                 char image_name[1024];
                 
-                sprintf(image_name, "bounding_box_test/%d_%d_%d_%s", img_id, img_id, img_id, best_class_id);
+                sprintf(image_name, "bounding_box_test/%d_%s_%d_%d", img_id, p[2], img_id, best_class_id);
                 save_image(cropped_im, image_name);
                 free_image(cropped_im);
             }
