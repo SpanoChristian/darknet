@@ -439,7 +439,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
 
                 char image_name[1024];
                 
-                sprintf(image_name, "bounding_box_test/%d_%d_%d", p[0], p[1], p[2]);
+                sprintf(image_name, "bounding_box_test/%d_c1s1_%d_%d", img_id, img_id, best_class_id);
                 save_image(cropped_im, image_name);
                 free_image(cropped_im);
             }
