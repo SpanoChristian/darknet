@@ -1647,13 +1647,25 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         if(letter_box) sized = letterbox_image(im, net.w, net.h);
         else sized = resize_image(im, net.w, net.h);
 
+        char path[] = "C:/etc/passwd.c"; //string with escaped slashes
+        char temp[256]; //result here
+        char *ch; //define this
+        ch = strtok(path, "/"); //first split
+        while (ch != NULL) {
+            strcpy(temp, ch);//copy result
+            printf("%s\n", ch);
+            ch = strtok(NULL, "/");//next split
+        }
+
+        printf("last filename: %s", temp);//result filename
+
         layer l = net.layers[net.n - 1];
         int k;
         for (k = 0; k < net.n; ++k) {
             layer lk = net.layers[k];
             if (lk.type == YOLO || lk.type == GAUSSIAN_YOLO || lk.type == REGION) {
                 l = lk;
-                printf("FILENAME: %s ---- Detection layer: %d - type = %d \n", filename, k, l.type);
+                printf("FILENAME: %s,%s ---- Detection layer: %d - type = %d \n", filename, temp, k, l.type);
             }
         }
 
@@ -1887,19 +1899,8 @@ void draw_object(char *datacfg, char *cfgfile, char *weightfile, char *filename,
             if (l.nms_kind == DEFAULT_NMS) do_nms_sort(dets, nboxes, l.classes, nms);
             else diounms_sort(dets, nboxes, l.classes, nms, l.nms_kind, l.beta_nms);
         }
-        char path[] = "C:/etc/passwd.c"; //string with escaped slashes
-        char temp[256]; //result here
-        char *ch; //define this
-        ch = strtok(path, "/"); //first split
-        while (ch != NULL) {
-            strcpy(temp, ch);//copy result
-            printf("%s\n", ch);
-            ch = strtok(NULL, "/");//next split
-        }
 
-        printf("last filename: %s", temp);//result filename
-
-        draw_detections_v3(sized, dets, nboxes, thresh, names, alphabet, l.classes, 1, filename);
+        draw_detections_v3(sized, dets, nboxes, thresh, names, alphabet, l.classes, 1, temp);
         save_image(sized, "pre_predictions");
         if (!dont_show) {
             show_image(sized, "pre_predictions");
