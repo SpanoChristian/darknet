@@ -332,7 +332,6 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
 {
     char *p;
     p = strtok(file_name, "_");
-
     //char delimiter[1] = "_";
 
     //char img_identification[5] = s.substr(0, s.find(delimiter));
