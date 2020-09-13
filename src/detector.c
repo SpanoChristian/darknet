@@ -1647,7 +1647,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         if(letter_box) sized = letterbox_image(im, net.w, net.h);
         else sized = resize_image(im, net.w, net.h);
 
-        char *path[] = filename; //string with escaped slashes
+        char path[] = *filename; //string with escaped slashes
         char temp[256]; //result here
         char *ch; //define this
         ch = strtok(path, "/"); //first split
