@@ -1732,7 +1732,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         std::string delimiter = "/";
         std::string token = s.substr(2, s.find(delimiter));*/
 
-        draw_detections_v3(im, dets, nboxes, thresh, names, alphabet, l.classes, ext_output, lbl_ID, lbl_camera, lbl_frame);
+        draw_detections_v3(im, dets, nboxes, thresh, names, alphabet, l.classes, ext_output, lbl_camera, lbl_frame);
         save_image(im, "predictions");
         if (!dont_show) {
             show_image(im, "predictions");
@@ -1938,7 +1938,7 @@ void draw_object(char *datacfg, char *cfgfile, char *weightfile, char *filename,
             else diounms_sort(dets, nboxes, l.classes, nms, l.nms_kind, l.beta_nms);
         }
 
-        draw_detections_v3(sized, dets, nboxes, thresh, names, alphabet, l.classes, 1, NULL, NULL, NULL);
+        draw_detections_v3(sized, dets, nboxes, thresh, names, alphabet, l.classes, 1, NULL, NULL);
         save_image(sized, "pre_predictions");
         if (!dont_show) {
             show_image(sized, "pre_predictions");
