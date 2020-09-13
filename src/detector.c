@@ -1673,7 +1673,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
 		printf("Next: %s\n", ch2);
 
         char *ch3; //define this
-        ch3 = strtok(ch2, "_"); //first split
+        ch3 = strtok(ch2, "."); //first split
         printf("FRAME: %s\n", ch3);
 
         layer l = net.layers[net.n - 1];
