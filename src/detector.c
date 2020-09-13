@@ -1592,7 +1592,7 @@ void calc_anchors(char *datacfg, int num_of_clusters, int width, int height, int
 char *remove_ext(char* myStr) {
     char *retStr;
     char *lastExt;
-    if (mystr == NULL) return NULL;
+    if (myStr == NULL) return NULL;
     if ((retStr = malloc (strlen (myStr) + 1)) == NULL) return NULL;
     strcpy (retStr, myStr);
     lastExt = strrchr (retStr, '.');
