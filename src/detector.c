@@ -1647,7 +1647,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         if(letter_box) sized = letterbox_image(im, net.w, net.h);
         else sized = resize_image(im, net.w, net.h);
 
-        char path[];
+        char path[100];
         strncpy(path,filename,100); /* copy up to 100 chars from field to c */
         path[99] = '\0';         /* ..and make sure the last char in c is '\0' */
         //char path[] = filename; //string with escaped slashes
