@@ -1659,12 +1659,10 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
             printf("%s\n", ch);
             ch = strtok(NULL, "/");//next split
         }
-
         printf("last filename: %s", temp);//result filename
 
-        char temp2[256]; //result here
-        char *ch2; //define this
 
+        char *ch2; //define this
         ch2 = strtok(temp, "_"); //first split
         printf("1st word: %s\n", ch2);
 
@@ -1674,6 +1672,9 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         while ((ch2 = strtok(NULL, "_")) != NULL)
 		printf("Next: %s\n", ch2);
 
+        char *ch3; //define this
+        ch3 = strtok(ch2, "_"); //first split
+        printf("FRAME: %s\n", ch3);
 
         layer l = net.layers[net.n - 1];
         int k;
