@@ -328,7 +328,7 @@ int compare_by_probs(const void *a_ptr, const void *b_ptr) {
     return delta < 0 ? -1 : delta > 0 ? 1 : 0;
 }
 
-void draw_detections_v3(image im, detection *dets, int num, float thresh, char **names, image **alphabet, int classes, int ext_output, char *lbl_ID, char *lbl_camera, char *lbl_frame)
+void draw_detections_v3(image im, detection *dets, int num, float thresh, char **names, image **alphabet, int classes, int ext_output, char[] lbl_ID, char[] lbl_camera, char[] lbl_frame)
 {
     static int frame_id = 0;
     frame_id++;
