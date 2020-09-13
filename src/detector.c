@@ -1589,6 +1589,17 @@ void calc_anchors(char *datacfg, int num_of_clusters, int width, int height, int
     getchar();
 }
 
+char *remove_ext(char* myStr) {
+    char *retStr;
+    char *lastExt;
+    if (mystr == NULL) return NULL;
+    if ((retStr = malloc (strlen (myStr) + 1)) == NULL) return NULL;
+    strcpy (retStr, myStr);
+    lastExt = strrchr (retStr, '.');
+    if (lastExt != NULL)
+        *lastExt = '\0';
+    return retDtr;
+}
 
 void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filename, float thresh,
     float hier_thresh, int dont_show, int ext_output, int save_labels, char *outfile, int letter_box, int benchmark_layers)
@@ -1672,8 +1683,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         while ((ch2 = strtok(NULL, "_")) != NULL)
 		printf("Next: %s\n", ch2);
 
-        char *ch3; //define this
-        ch3 = strtok(ch2, "."); //first split
+        char *ch3 = remove_ext(ch2);
         printf("FRAME: %s\n", ch3);
 
         layer l = net.layers[net.n - 1];
