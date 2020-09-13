@@ -1660,9 +1660,9 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
 
         // PROCEDURA PER SALVATAGGIO LABEL CON CAMERA E ID CORRISPONDENTI AL FRAME
 
-        char[5] lbl_ID;
-        char[4] lbl_camera;
-        char[6] lbl_frame;
+        char lbl_ID[5];
+        char lbl_camera[4];
+        char lbl_frame[6];
 
         // Split del path: ch contiene nome file ("ID_Ci_Frame.jpg")
         char path[100];
