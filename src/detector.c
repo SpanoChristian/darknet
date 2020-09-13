@@ -1598,7 +1598,7 @@ char *remove_ext(char* myStr) {
     lastExt = strrchr (retStr, '.');
     if (lastExt != NULL)
         *lastExt = '\0';
-    return retDtr;
+    return retStr;
 }
 
 void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filename, float thresh,
