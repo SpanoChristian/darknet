@@ -328,15 +328,8 @@ int compare_by_probs(const void *a_ptr, const void *b_ptr) {
     return delta < 0 ? -1 : delta > 0 ? 1 : 0;
 }
 
-void draw_detections_v3(image im, detection *dets, int num, float thresh, char **names, image **alphabet, int classes, int ext_output, char *file_name)
+void draw_detections_v3(image im, detection *dets, int num, float thresh, char **names, image **alphabet, int classes, int ext_output, char *lbl_ID, char *lbl_camera, char *lbl_frame)
 {
-    char *p;
-    p = strtok(file_name, "_");
-    //char delimiter[1] = "_";
-
-    //char img_identification[5] = s.substr(0, s.find(delimiter));
-    //char img_camera[5] = s.substr(1, s.find(delimiter));
-
     static int frame_id = 0;
     frame_id++;
 
@@ -438,7 +431,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
 
                 char image_name[1024];
                 
-                sprintf(image_name, "bounding_box_test/%d_c4s1_%d_%d", img_id, img_id, best_class_id);
+                sprintf(image_name, "bounding_box_test/%s_%s_%s", lbl_ID, lbl_camera, lbl_frame);
                 save_image(cropped_im, image_name);
                 free_image(cropped_im);
             }

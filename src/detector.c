@@ -1658,6 +1658,13 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         if(letter_box) sized = letterbox_image(im, net.w, net.h);
         else sized = resize_image(im, net.w, net.h);
 
+        // PROCEDURA PER SALVATAGGIO LABEL CON CAMERA E ID CORRISPONDENTI AL FRAME
+
+        char[5] lbl_ID;
+        char[4] lbl_camera;
+        char[6] lbl_frame;
+
+        // Split del path: ch contiene nome file ("ID_Ci_Frame.jpg")
         char path[100];
         strncpy(path,filename,100); /* copy up to 100 chars from field to c */
         path[99] = '\0';         /* ..and make sure the last char in c is '\0' */
@@ -1670,21 +1677,25 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
             printf("%s\n", ch);
             ch = strtok(NULL, "/");//next split
         }
-        printf("last filename: %s", temp);//result filename
 
+        // Get frame ID
+        char *ch2; 
+        ch2 = strtok(temp, "_");
+        strncpy(lbl_ID, ch2, 5); /* copy up to 100 chars from field to c */
+        lbl_ID[4] = '\0';         /* ..and make sure the last char in c is '\0' */
 
-        char *ch2; //define this
-        ch2 = strtok(temp, "_"); //first split
-        printf("1st word: %s\n", ch2);
-
+        // Get Camera
         ch2 = strtok(NULL, "_");
-	    printf("2nd word: %s\n", ch2);
+	    strncpy(lbl_camera, ch2, 4); /* copy up to 100 chars from field to c */
+        lbl_camera[3] = '\0';         /* ..and make sure the last char in c is '\0' */
 
-        while ((ch2 = strtok(NULL, "_")) != NULL)
-		printf("Next: %s\n", ch2);
-
-        char *ch3 = remove_ext(ch2);
-        printf("FRAME: %s\n", ch3);
+        // Get Frame
+        // !! in ch2 c'è ora contenuto "NumeroFrame.jpg". Senza dover togliere ".jpg" lo lasciamo
+        // poi nello script "image.c" togliamo ".jpg" quando si salva l'immagine
+        while ((ch2 = strtok(NULL, "_")) != NULL) {
+            strncpy(lbl_frame, ch2, 6); /* copy up to 100 chars from field to c */
+            lbl_frame[5] = '\0';         /* ..and make sure the last char in c is '\0' */
+        }
 
         layer l = net.layers[net.n - 1];
         int k;
@@ -1721,7 +1732,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         std::string delimiter = "/";
         std::string token = s.substr(2, s.find(delimiter));*/
 
-        draw_detections_v3(im, dets, nboxes, thresh, names, alphabet, l.classes, ext_output, filename);
+        draw_detections_v3(im, dets, nboxes, thresh, names, alphabet, l.classes, ext_output, lbl_ID, lbl_camera, lbl_frame);
         save_image(im, "predictions");
         if (!dont_show) {
             show_image(im, "predictions");
