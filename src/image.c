@@ -427,7 +427,7 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
                 static int person_id = 0;
 
                 srand (time(NULL));
-                person_id = rand() % 100000 + 1;
+                person_id = rand() % 100000 + 1000;
 
                 char image_name[1024];
                 
